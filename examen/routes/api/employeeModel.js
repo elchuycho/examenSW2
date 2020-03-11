@@ -27,15 +27,8 @@ function employeeModel(db){
   ////////////////////////////////////GET BY COMPANY/////////////////////////
   lib.getEmployeesByCompany = (company, handler) => {
     var query = { "company": company };
-    empColl.findOne(
-      query,
-      (err, doc) => {
-        if (err) {
-          return handler(err, null);
-        }
-        return handler(null, doc);
-      }
-    );
+    var projection = {"name":1, "email":1, "company":1};
+    empColl.find(query,{"projection":projection}).toArray(handler);
   }
 
   //////////////////////////////GET BY TAG//////////////////////////////////////
