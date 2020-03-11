@@ -68,7 +68,23 @@ router.get('/bytag/:tag',(req, res)=>{
   });
 });
 
-////////////////////////////////////////////////////////////
+////////////////////////POST ADD TAG////////////////////////////////////
+// http://localhost:3000/api/employee/addtag/:id
+router.post('/addtag/:id', (req, res, next)=>{
+  var id = req.params.id;
+  var tag = req.body.tag;
+
+  empModel.addEmployeeATag(tag,id, (err, result)=>{
+    if(err){
+      console.log(err);
+      return res.status(500).json({"error":"error"});
+    }
+    return res.status(200).json(result);
+});
+});
+
+
+
   return router;
 }
 

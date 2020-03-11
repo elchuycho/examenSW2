@@ -52,11 +52,22 @@ function employeeModel(db){
     );
   }
 
-  lib.addEmployeeATag = ( tag, id, handler) => {
-    //Implementar
-    //Se requiere agregar a un documento un nuevo tag
-    // $push
-    return handler(new Error("No Implementado"), null);
+
+  ////////////////////////POST ADD A TAG///////////////////////////////////////
+ lib.addEmployeeATag = ( tag, id, handler) => {
+   var query = {"_id": new ObjectID(id)};
+   var postCommand = {
+    "$push":{
+      "tags": tag
+    }
+   };
+   empColl.updateOne(query, postCommand, (err, doc)=>{
+    if (err) {
+      console.log(err);
+      return handler(err, null);
+    }
+    return handler(null, doc);
+   });
   }
 
   lib.removeEmployee = (id, handler) => {
