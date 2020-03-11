@@ -34,15 +34,8 @@ function employeeModel(db){
   //////////////////////////////GET BY TAG//////////////////////////////////////
   lib.getEmployeesByTag = (tag, handler) => {
     var query = { "tags": tag };
-    empColl.findOne(
-      query,
-      (err, doc) => {
-        if (err) {
-          return handler(err, null);
-        }
-        return handler(null, doc);
-      }
-    );
+    var projection = {"name":1, "email":1, "tags":1};
+    empColl.find(query,{"projection":projection}).toArray(handler);
   }
 
 
