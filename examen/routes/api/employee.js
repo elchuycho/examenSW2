@@ -132,6 +132,22 @@ router.put('/makeolder/:id', (req, res)=>{
   });// update
 });
 
+///////////////////////EXTRA NUM 2 FILTRO POR ANIOS////////////
+//http://localhost:3000/api/employee/byagerange/:min/:max
+router.get('/byagerange/:min/:max', (req, res , next)=>{
+  var min = parseInt(req.params.min);
+  var max = parseInt(req.params.max);
+  empModel.getEmployeesByAgeRange(min,max, (err, employees)=>{
+    if(err){
+      console.log(err);
+      return res.status(500).json({"error":"error"});
+    }
+    return res.status(200).json(employees);
+  });
+});
+
+
+
 
 
   return router;

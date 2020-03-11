@@ -125,6 +125,19 @@ lib.increaseageporid = ( dataToUpdate , handler )=>{
   );
 }
 
+//////////////////EXTRA FILTRO POR ANIO/////////////////////////////
+lib.getEmployeesByAgeRange = (ageLowLimit, ageHighLimit, handler) => {
+  //implementar
+  var query = {$and : [
+    {"age":{$lte:ageHighLimit}},
+    {"age":{$gte:ageLowLimit}} ]};
+    var projection = {"name":1, "email":1, "age":1};
+  empColl.find(query,{"projection":projection}).toArray(handler);
+  // solo mostrar name, age, email de todas las personas entre esos rangos
+}
+
+
+
   return lib;
 }
 
