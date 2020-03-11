@@ -3,17 +3,24 @@ var ObjectID = require('mongodb').ObjectID;
 function employeeModel(db){
   var lib = {};
   var empColl = db.collection('employees');
-  lib.getEmployees = (handler)=>{
-    // implementar
-    // obtener todos los documentos
-    return handler(new Error("No Implementado"), null);
-  }
 
+
+  //////////////////////GET EMPLOYESSS ALL///////////////////////////////
+  lib.getEmployees = (handler)=>{
+    empColl.find({}).toArray(handler);
+  }
+/////////////////////////////////////////////////////////////////////////////////////
   lib.getEmployeesById = (id, handler) => {
-    // implementar
-    // Obtener un Documento solo mostrar
-    // email, phone, name y age
-    return handler(new Error("No Implementado"), null);
+    var query = { "_id": new ObjectID(id) };
+    empColl.findOne(
+      query,
+      (err, doc) => {
+        if (err) {
+          return handler(err, null);
+        }
+        return handler(null, doc);
+      }
+    );
   }
 
   lib.getEmployeesByCompany = (company, handler) => {

@@ -16,13 +16,31 @@ function initEmployee(db) {
       POST      /makeolder               age
    */
 
-  router.get('/all', (req, res, next) => {
-    /*
-    empModel.xyz( (err, docs)=>{
-      return res.status(200).json(docs);
+/////////////////////// GET /ALL/////////////////////////////////
+// http://localhost:3000/api/employee/all
+  router.get('/all', (req, res)=>{
+    empModel.getEmployees((err, dat)=>{
+      if(err){
+        console.log(err);
+        return res.status(500).json({"error":"no se pudo obtener srry"});
+      }
+      return res.status(200).json(dat);
     });
-    */
-  });// all
+} );
+
+//////////////////////BY ID/////////////////////////////////////
+ // http://localhost:3000/api/employee/byid/:id
+   router.get('/byid/:id',(req, res)=>{
+    var id =  req.params.id ;
+    empModel.getEmployeesById(id, (err, doc)=>{
+      if(err){
+        console.log(err);
+        return res.status(500).json({"error":"error"});
+      }
+      return res.status(200).json(doc);
+    });
+});
+
 
   
   return router;
