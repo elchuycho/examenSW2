@@ -12,17 +12,10 @@ function employeeModel(db){
 ////////////////////////////////////GET BY ID//////////////////////////////////////
   lib.getEmployeesById = (id, handler) => {
     var query = { "_id": new ObjectID(id) };
-    empColl.findOne(
-      query,
-      (err, doc) => {
-        if (err) {
-          return handler(err, null);
-        }
-        return handler(null, doc);
-      }
-    );
+    var projection = {"name":1, "email":1, "age":1, "phone":1};
+    empColl.find(query,{"projection":projection}).toArray(handler);
   }
-
+//L PHONE
 
   ////////////////////////////////////GET BY COMPANY/////////////////////////
   lib.getEmployeesByCompany = (company, handler) => {
