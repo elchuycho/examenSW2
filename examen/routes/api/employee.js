@@ -16,6 +16,9 @@ function initEmployee(db) {
       POST      /makeolder               age
    */
 
+
+   /*******   EXTRA MAKEOLDER POR ID **********************/
+
 /////////////////////// GET /ALL/////////////////////////////////
 // http://localhost:3000/api/employee/all
   router.get('/all', (req, res)=>{
@@ -108,6 +111,25 @@ router.put('/makeolder', (req, res, next)=>{
     }
     return res.status(200).json(result);
   });
+});
+
+
+
+////////////////////PUT ,MAKEOLDER POR ID//////////////////////
+//http://localhost:3000/api/employee/makeolder/:id
+router.put('/makeolder/:id', (req, res)=>{
+  var id = req.params.id;
+  var data = {
+    "_id": id,
+    ...req.body
+  };
+  empModel.increaseageporid(data, (err, updatedDoc)=>{
+    if(err){
+      console.log(err);
+      return res.status(500).json({"error":"error"});
+    }
+    return res.status(200).json(updatedDoc);
+  });// update
 });
 
 

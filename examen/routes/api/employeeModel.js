@@ -104,6 +104,26 @@ function employeeModel(db){
   }
 
 
+////////////////////EXTRA MAKEOLDER POR ID///////////////////////////////
+lib.increaseageporid = ( dataToUpdate , handler )=>{
+  var { _id} = dataToUpdate;
+  var query = { "_id": new ObjectID(_id)};
+  var updateCommad = {
+    "$inc" :{
+      "age": 1
+    }
+  };
+  empColl.updateOne(
+    query,
+    updateCommad,
+    (err, rslt)=>{
+      if(err){
+        return handler(err, null);
+      }
+      return handler(null, rslt.result);
+    }
+  );
+}
 
   return lib;
 }
