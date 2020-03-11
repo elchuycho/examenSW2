@@ -84,6 +84,33 @@ router.post('/addtag/:id', (req, res, next)=>{
 });
 
 
+///////////////////////DELETE POR ID////////////////////////////////
+//http://localhost:3000/api/employee/delete/:id
+router.delete('/delete/:id', (req, res)=>{
+  var id = req.params.id;
+  empModel.removeEmployee(id, (err, deletedDoc)=>{
+    if(err){
+      console.log(err);
+      return res.status(500).json({"error":"error"});
+    }
+    return res.status(200).json(deletedDoc);
+  });
+});
+
+/////////////////////////PUT MAKEOLDER 1 ANIO/////////////////////////
+//http://localhost:3000/api/employee/makeolder
+router.put('/makeolder', (req, res, next)=>{
+  var data = req.body;
+  empModel.increaseAgeToAll(data, (err, result)=>{
+    if(err){
+      console.log(err);
+      return res.status(500).json({"error":"error"});
+    }
+    return res.status(200).json(result);
+  });
+});
+
+
 
   return router;
 }

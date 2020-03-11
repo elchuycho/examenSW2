@@ -70,18 +70,41 @@ function employeeModel(db){
    });
   }
 
+  ////////////////////////DELETE POR ID/////////////////////////////////////
   lib.removeEmployee = (id, handler) => {
-    //Implementar
-    //Se requiere eliminar un documento de la colección
-    return handler(new Error("No Implementado"), null);
+    var query = {"_id": new ObjectID(id)};
+        empColl.deleteOne(
+          query,
+          (err, rslt)=>{
+            if(err){
+              return handler(err, null);
+            }
+            return handler(null, rslt.result);
+          }
+        );
   }
 
+
+  ///////////////////////INCREMENTAR 1 ANIO A TODOS/////////////////////
+  ///para modificar cuanros anios mas en postman en bidy editar el valor 1///////
   lib.increaseAgeToAll = (ageDelta, handler) => {
-    //Implementar
-    //Se requiere modificar todos los documentos de la colección
-    // incrementando age por la cantidad de ageDelta $inc
-    return handler(new Error("No Implementado"), null);
+  var { ageToAdd } = ageDelta;
+  var updateCommand = {
+    "$inc":{
+      "age":parseInt(ageToAdd)
+    }
+  };
+  empColl.updateMany({},updateCommand, (err, updateResult)=>{
+  if (err) {
+    console.log(err);
+    return handler(err, null);
   }
+  return handler(null, updateResult);
+});
+  }
+
+
+
   return lib;
 }
 
