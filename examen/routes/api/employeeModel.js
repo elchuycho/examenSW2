@@ -9,7 +9,7 @@ function employeeModel(db){
   lib.getEmployees = (handler)=>{
     empColl.find({}).toArray(handler);
   }
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////GET BY ID//////////////////////////////////////
   lib.getEmployeesById = (id, handler) => {
     var query = { "_id": new ObjectID(id) };
     empColl.findOne(
@@ -23,19 +23,33 @@ function employeeModel(db){
     );
   }
 
+
+  ////////////////////////////////////GET BY COMPANY/////////////////////////
   lib.getEmployeesByCompany = (company, handler) => {
-    // implementar
-    // solo mostrar name, email, company
-    return handler(new Error("No Implementado"), null);
+    var query = { "company": company };
+    empColl.findOne(
+      query,
+      (err, doc) => {
+        if (err) {
+          return handler(err, null);
+        }
+        return handler(null, doc);
+      }
+    );
   }
 
+  //////////////////////////////GET BY TAG//////////////////////////////////////
   lib.getEmployeesByTag = (tag, handler) => {
-    //implementar
-    // obtener todos los documentos que contenga 
-    // al menos una vez el tag dentro del arreglo
-    // tags
-    // mostrar solo name, email, tags
-    return handler(new Error("No Implementado"), null);
+    var query = { "tags": tag };
+    empColl.findOne(
+      query,
+      (err, doc) => {
+        if (err) {
+          return handler(err, null);
+        }
+        return handler(null, doc);
+      }
+    );
   }
 
   lib.addEmployeeATag = ( tag, id, handler) => {

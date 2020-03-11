@@ -42,7 +42,33 @@ function initEmployee(db) {
 });
 
 
-  
+///////////////////////GET BY COMPANY/////////////////////////////
+// http://localhost:3000/api/employee/bycompany/:company
+router.get('/bycompany/:company',(req, res)=>{
+  var company =  req.params.company ;
+  empModel.getEmployeesByCompany(company, (err, doc)=>{
+    if(err){
+      console.log(err);
+      return res.status(500).json({"error":"error"});
+    }
+    return res.status(200).json(doc);
+  });
+});
+
+/////////////////////GET BY TAG///////////////////////////////  
+// http://localhost:3000/api/employee/bytag/:tag
+router.get('/bytag/:tag',(req, res)=>{
+  var tag =  req.params.tag ;
+  empModel.getEmployeesByTag(tag, (err, doc)=>{
+    if(err){
+      console.log(err);
+      return res.status(500).json({"error":"error"});
+    }
+    return res.status(200).json(doc);
+  });
+});
+
+////////////////////////////////////////////////////////////
   return router;
 }
 
