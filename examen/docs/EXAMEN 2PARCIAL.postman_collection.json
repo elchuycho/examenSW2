@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "26bc6f93-ceb1-491e-a1bb-cea40685443c",
+		"name": "EXAMEN 2PARCIAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/employee/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employee/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employee",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/employee/byid/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employee/byid/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employee",
+						"byid",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5e68260c05239056a8e9dca4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/employee/bycompany/:company",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employee/bycompany/:company",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employee",
+						"bycompany",
+						":company"
+					],
+					"variable": [
+						{
+							"key": "company",
+							"value": "FLOTONIC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/employee/bytag/:tag",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employee/bytag/:tag",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employee",
+						"bytag",
+						":tag"
+					],
+					"variable": [
+						{
+							"key": "tag",
+							"value": "labore"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/employee/addtag/:id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tag",
+							"value": "sepaaaaaa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/employee/addtag/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employee",
+						"addtag",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5e68260c011d4989d9fa4319"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/employee/delete/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employee/delete/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employee",
+						"delete",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5e68260c05239056a8e9dca4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/employee/makeolder",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "ageToAdd",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/employee/makeolder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employee",
+						"makeolder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EXTRAAA/api/employee/makeolder/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employee/makeolder/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employee",
+						"makeolder",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5e68260c06118f0ae8a309b4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EXTRA2/api/employee/byagerange/:min/:max",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employee/byagerange/:min/:max",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employee",
+						"byagerange",
+						":min",
+						":max"
+					],
+					"variable": [
+						{
+							"key": "min",
+							"value": "10"
+						},
+						{
+							"key": "max",
+							"value": "25"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
